@@ -9,6 +9,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import spittr.vo.Spitter;
 import spittr.vo.Spittle;
 
 /**
@@ -27,6 +28,28 @@ public class SpittrRepositoryImpl implements SpittrRepository {
 		Spittle sp = new Spittle("message", new Date());
 		spList.add(sp);
 		return spList;
+	}
+
+	@Override
+	public void save(Spitter spitter) {
+		if(spitter != null){
+		spitter = new Spitter(spitter.getFirstName(),spitter.getLastName(),
+				spitter.getUsername(), spitter.getPassword(), spitter.getPassword());
+		}
+		else{
+			spitter = new Spitter();
+		}
+	}
+
+	@Override
+	public Spitter findUser(String username) {
+		Spitter spitter = new Spitter();
+		if(username != null){
+			spitter.setUsername(username);
+			spitter.setFirstName("test");
+			spitter.setLastName("test");
+		}
+		return spitter;
 	}
 
 }

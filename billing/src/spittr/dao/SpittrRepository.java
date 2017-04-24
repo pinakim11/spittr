@@ -5,6 +5,7 @@ package spittr.dao;
 
 import java.util.List;
 
+import spittr.vo.Spitter;
 import spittr.vo.Spittle;
 
 /**
@@ -14,4 +15,8 @@ import spittr.vo.Spittle;
 public interface SpittrRepository {
 
 	public List<Spittle> findSpittr(long maxId,int count);
+
+	public void save(Spitter spitter);
+
+	public Spitter findUser(String username);
 }
